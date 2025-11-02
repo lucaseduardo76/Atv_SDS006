@@ -11,14 +11,14 @@ const customStyles = `
   }
 `;
 
-export default function ModalSucesso() {
+export default function ModalError() {
   return (
     <>
       <style>{customStyles}</style>
 
       <div className="min-h-screen bg-zinc-950 flex items-center justify-center p-8">
         <div className="success-card-styles bg-zinc-900 w-full max-w-md rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden">
-          <h2 className="text-2xl text-white mb-4">SUCESSO</h2>
+          <h2 className="text-2xl text-white mb-4">ERRO</h2>
 
           <p className="text-lg text-zinc-400 mb-4">
             Vishhhh, deu erro...

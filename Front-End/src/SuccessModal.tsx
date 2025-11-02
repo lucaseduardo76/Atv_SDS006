@@ -15,6 +15,7 @@ const customStyles = `
 export default function SuccessModal() {
   const [user, setUser] = useState<string | null>(null);
   const [imgUrl, setImgUrl] = useState<string>("");
+  const [showAnimation, setShowAnimation] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,11 +41,11 @@ export default function SuccessModal() {
       })
       .catch((err) => {
         console.error("Erro ao buscar usuário:", err);
-        navigate("/"); 
+        navigate("/");
       });
   }, [navigate]);
 
-  if (!user) return null; 
+  if (!user) return null;
   return (
     <>
       <style>{customStyles}</style>
@@ -55,10 +56,19 @@ export default function SuccessModal() {
           <p className="text-lg text-zinc-400">
             Boas notícias {user}! Você fez login com sucesso!
           </p>
-        
+
+          ( <Lottie
+            animationData={checkAnimation}
+            loop={false}
+            autoplay={true}
+            style={{ width: 150, height: 150 }}
+            onComplete={() => setShowAnimation(false)}
+          />
+          ) : (
           <img
-            src={imgUrl} 
+            src={imgUrl}
             alt="Foto do usuário"
+            className="my-[10px]"
             style={{
               width: "150px",
               height: "150px",
@@ -66,12 +76,7 @@ export default function SuccessModal() {
               objectFit: "cover",
             }}
           />
-          <Lottie
-            animationData={checkAnimation}
-            loop={false}
-            autoplay={true}
-            style={{ width: 160, height: 160 }}
-          />
+          )
 
           <p className="text-base text-zinc-400">
             Mas não tem nada para fazer aqui...

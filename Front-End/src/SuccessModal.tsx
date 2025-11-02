@@ -53,32 +53,33 @@ export default function SuccessModal() {
       <div className="min-h-screen bg-zinc-950 flex items-center justify-center p-8">
         <div className="success-card-styles bg-zinc-900 w-full max-w-md rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden">
           <h2 className="text-2xl text-white mb-4">SUCESSO</h2>
-          <p className="text-lg text-zinc-400">
+          <p className="text-lg text-zinc-400 mb-8">
             Boas notícias {user}! Você fez login com sucesso!
           </p>
 
-          ( <Lottie
-            animationData={checkAnimation}
-            loop={false}
-            autoplay={true}
-            style={{ width: 150, height: 150 }}
-            onComplete={() => setShowAnimation(false)}
-          />
+          {showAnimation ? (
+            <Lottie
+              animationData={checkAnimation}
+              loop={false}
+              autoplay={true}
+              style={{ width: 150, height: 150 }}
+              onComplete={() => setShowAnimation(false)}
+            />
           ) : (
-          <img
-            src={imgUrl}
-            alt="Foto do usuário"
-            className="my-[10px]"
-            style={{
-              width: "150px",
-              height: "150px",
-              borderRadius: "50%",
-              objectFit: "cover",
-            }}
-          />
-          )
+            <img
+              src={imgUrl}
+              alt="Foto do usuário"
+              className="my-[10px]"
+              style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                objectFit: "cover",
+              }}
+            />
+          )}
 
-          <p className="text-base text-zinc-400">
+          <p className="text-base text-zinc-400 mt-8">
             Mas não tem nada para fazer aqui...
           </p>
         </div>
